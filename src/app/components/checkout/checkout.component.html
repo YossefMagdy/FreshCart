@@ -1,0 +1,27 @@
+<div class="mt-5 w-75 mx-auto py-5" >
+    <form action="" (ngSubmit)="Checkout()" [formGroup]="shippingAddress">
+        
+        <label for="details">Details :</label>
+        <input type="text" id="details" formControlName="details" class="form-control" name="" >
+        <div *ngIf="shippingAddress.get('details')?.errors && shippingAddress.get('details')?.touched" class="alert alert-danger">
+            <p *ngIf="shippingAddress.get('details')?.getError('minlength')" class="m-0">details MinLength is 3</p>
+            <p *ngIf="shippingAddress.get('details')?.getError('required')" class="m-0">details Required</p>
+        </div>
+        <label for="phone">phone :</label>
+        <input type="tel" id="phone" formControlName="phone" class="form-control " name="" >
+        <div *ngIf="shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.touched" class="alert alert-danger ">
+            <p *ngIf="shippingAddress.get('phone')?.getError('pattern')" class="m-0">phone in-valid</p>
+            <p *ngIf="shippingAddress.get('phone')?.getError('required')" class="m-0">phone Required</p>
+        </div>
+
+        <label for="city">city :</label>
+        <input type="text" id="city" formControlName="city" class="form-control" name="" >
+        <div *ngIf="shippingAddress.get('city')?.errors && shippingAddress.get('city')?.touched" class="alert alert-danger ">
+            <p *ngIf="shippingAddress.get('city')?.getError('required')" class="m-0">city Required</p>
+        </div>
+
+        <button class="btn bg-main d-block mx-auto mt-4 text-white">
+            <i *ngIf="loading" class="fa-solid text-white fa-spinner fa-spin-pulse"></i>
+            <span *ngIf="!loading">Check Out</span></button>
+    </form>
+</div>

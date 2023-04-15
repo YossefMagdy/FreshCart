@@ -1,0 +1,26 @@
+<app-main-slider></app-main-slider>
+<h3>Show Popular category</h3>
+<app-categ-slider></app-categ-slider>
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-pulse" [fullScreen] = "true"></ngx-spinner>
+
+<div>
+    <input [(ngModel)]="productName" type="text" class="form-control mt-5 mb-3 w-75 mx-auto" placeholder="Search By Name ....">
+</div>
+<div class="row g-4">
+    <div class="col-xl-2 col-lg-3 col-md-4  col-sm-6 product" *ngFor="let product of products|search:productName">
+        <div class="content py-3" [routerLink]="['/productDetail', product._id]">
+            <img [src]="product.imageCover" class="w-100" alt="">
+            <span class="text-main fw-bold">{{product.category.name}}</span>
+            <h3 class="h6 text-muted font-sm">{{product.title.split(' ').slice(0,2).join(' ')|uppercase}}</h3>
+            <div class="d-flex justify-content-between mt-3">
+                <p>{{product.price|currency:'E£ '}} EGP</p>
+                <p><i class="fa-solid fa-star rating-color"></i> {{product.ratingsAverage}}</p>
+            </div>
+        </div>
+        <div>
+            <button (click)="AddtoCart(product._id)" class="w-100 btn bg-main text-white">+Add</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-pulse" [fullScreen] = "true"></ngx-spinner>
+<div class="bg-main-light p-4 my-4">
+    <div class="d-flex justify-content-between ">
+        <div>
+            <h3>Shop Cart</h3>
+            <h6 class="text-main">Total Price : {{CartDetails?.totalCartPrice}} E£</h6>
+        </div>
+        <div >
+            <button (click)="ClearCart(); CartDetails={}" class="btn btn-danger w-100">Clear Cart</button>
+        </div>
+    </div>
+    <div *ngFor="let product of CartDetails?.products" class="row align-items-center border-bottom py-4">
+        <div class="col-md-1">
+            <img [src]="product?.product?.imageCover" class="w-100" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between mt-md-0 mt-sm-3">
+            <div class="w-75 ">
+                <h6>{{product?.product?.title}}</h6>
+                <h6 class="text-main">price : {{product.price}}</h6>
+                <button (click)="RemoveSpecifiItem(product.product._id)"  class="demo btn m-0 p-0"><i class="fa-regular fa-trash-can text-main"></i> 
+                <span >Remove</span></button>
+            </div>
+            <div>
+                <button (click)="UpdateCartProductQuantity(product.product._id,product.count+1); product.count=product.count+1" class="btn bg-main btn-sm text-white">+</button>
+                <span class="mx-2">{{product.count}}</span>
+                <button (click)="UpdateCartProductQuantity(product.product._id,product.count-1);product.count=product.count-1" class="btn bg-main btn-sm text-white">-</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button [routerLink]="['/CheckOut',CartDetails?._id]" class="btn bg-main mx-auto d-block mt-4 w-50 text-white fw-bolder">Online Payment</button>
+    </div>
+</div>

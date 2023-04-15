@@ -1,0 +1,13 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-pulse" [fullScreen] = "true"></ngx-spinner>
+<div class="container">
+    <div class="row g-4 ">
+        <div class="col-xl-2 col-lg-3 col-md-4  col-sm-6 product pb-2" *ngFor="let Category of Category">
+            <div class="content py-3" [routerLink]="['/GetSpecCategory', Category._id]">
+                <img [src]="Category.image" height="200" class="w-100" alt="">
+                <h3 class="h5 text-muted text-center mt-3 fw-bold">{{Category.name}}</h3>
+            </div>
+            <div>
+                <button  [routerLink]="['/GetSpecCategory', Category._id]" class="w-100 btn bg-main text-white">Open</button>
+            </div>
+        </div>
+</div>

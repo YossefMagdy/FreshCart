@@ -1,0 +1,24 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-pulse" [fullScreen] = "true"></ngx-spinner>
+<div *ngIf="Dready" class="row align-items-center">
+    <div class="col-md-4">
+        <owl-carousel-o [options]="customOptions">
+
+            <ng-container *ngFor="let slide of productDetail.images">
+              <ng-template carouselSlide>
+                <img [src]="slide">
+              </ng-template>
+            </ng-container>
+        
+          </owl-carousel-o>
+    </div>
+    <div class="col-md-8">
+        <h2>{{productDetail.title}}</h2>
+        <p>{{productDetail.description}}</p>
+        <div class="d-flex justify-content-between mt-3">
+            <p>{{productDetail.price}} EGP</p>
+            <p><i class="fa-solid fa-star rating-color"></i> {{productDetail.ratingsAverage}}</p>
+        </div>
+        <button (click)="AddtoCart()" class="w-100 btn bg-main text-white">
+          <i *ngIf="loading" class="fa-solid text-white fa-spinner fa-spin-pulse"></i><span *ngIf="!loading">+Add</span></button>
+    </div>
+</div>
