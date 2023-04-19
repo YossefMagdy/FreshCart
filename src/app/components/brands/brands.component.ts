@@ -16,7 +16,6 @@ export class BrandsComponent implements OnInit{
       {
         next:(Response)=>{
           this.AllBrand=Response.data
-          console.log(this.AllBrand)
         }
       }
     )

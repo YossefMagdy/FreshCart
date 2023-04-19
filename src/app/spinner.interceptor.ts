@@ -15,7 +15,7 @@ export class SpinnerInterceptor implements HttpInterceptor {
   constructor(private _NgxSpinnerService:NgxSpinnerService ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log(request.method)
+    
     if(request.method=='POST' || request.method=='PUT' ){
       return next.handle(request)
     }else{

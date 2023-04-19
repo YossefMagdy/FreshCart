@@ -18,9 +18,7 @@ export class CartsComponent implements OnInit {
       {next:(Response)=>{
         
       this.CartDetails=Response.data
-      },
-      error:(error)=>console.log(error)
-      }
+      }      }
     )
   }
   RemoveSpecifiItem(id:string){
@@ -62,8 +60,7 @@ export class CartsComponent implements OnInit {
         this.CartDetails=Response.data
         this._CartService.numOfCartItems.next(Response.numOfCartItems)
         
-      },
-      error:(error)=>console.log(error)
+      }
       }
     )
   }

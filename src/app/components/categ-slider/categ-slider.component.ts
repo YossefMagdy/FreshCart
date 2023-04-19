@@ -16,20 +16,29 @@ export class CategSliderComponent implements OnInit {
     this._ProductsService.getCategories().subscribe({
       next:(response)=>{
         this.category=response.data
-        console.log(response.data)
+      
       }
     })
   }
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
-    touchDrag: false,
+    touchDrag: true,
     pullDrag: false,
     dots: false,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
       0: {
+        items: 1
+      },
+      400: {
+        items: 4
+      },
+      740: {
+        items: 5
+      },
+      940: {
         items: 7
       }
     },

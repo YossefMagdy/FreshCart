@@ -17,7 +17,6 @@ export class CategoriesComponent implements OnInit {
     this._ProductsService.getCategories().subscribe({
       next:(response)=>{
         this.Category=response.data
-        console.log(response)
       }
     })
   }
