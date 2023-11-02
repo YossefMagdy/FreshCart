@@ -13,8 +13,8 @@ export class LoginComponent {
   loading:boolean=false;
   constructor(private _AuthService:AuthService,private _Router:Router){}
     LoginForm:FormGroup=new FormGroup({
-      email:new FormControl(null,[Validators.required,Validators.email]),
-      password:new FormControl(null,[Validators.required,Validators.pattern(/^[a-zA-Z0-9@-_$%#@!*.]{8,15}$/)]),
+      email:new FormControl('demo@gmail.com',[Validators.required,Validators.email]),
+      password:new FormControl('Y@123456',[Validators.required,Validators.pattern(/^[a-zA-Z0-9@-_$%#@!*.]{8,15}$/)]),
     })
     HandleLogin(){
       if(this.LoginForm.valid){
